@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="biped_robot">
+  <compiler angle="radian" inertiafromgeom="true" coordinate="local" />
+  <option timestep="0.002" gravity="0 0 -9.81" integrator="implicit" />
+  
+  <worldbody>
+    <geom name="floor" type="plane" size="5 5 0.1" pos="0 0 0" rgba="0.4 0.5 0.9 1"/>
+    <light name="light1" pos="0 0 3" dir="0 0 -1" directional="true" />
+    
+    <body name="torso" pos="0 0 1.4">
+      <geom type="box" size="0.21 0.1 0.1" rgba="0.8 0.2 0.2 1" mass="1.1"/>
+      <freejoint name="root"/>
+      
+      <body name="right_leg" pos="0.15 0.12 0">
+        <body name="right_G">
+          <geom type="box" rgba="0.16 0.43 0.8 1" size="0.0335 0.0335 0.0335" mass="0.05"/>
+          
+          <body name="right_L6" quat="0.0985 0 0.9951 0">
+            <joint name="right_hip" type="hinge" axis="0 1 0" range="-3.14 3.14" damping="0.1"/>
+            <geom type="box" rgba="0.37 0.50 0.84 1" pos="0 0 0.076" size="0.0168 0.0168 0.0597" mass="0.097"/>
+            
+            <body name="right_L5" pos="0 0 0.153" quat="0.9875 0 0.1578 0">
+              <joint name="right_knee" type="hinge" axis="0 1 0" range="-3.14 3.14" damping="0.1"/>
+              <geom type="box" rgba="0.52 0.58 0.87 1" pos="0 0 0.126" size="0.0168 0.0168 0.109" mass="0.204"/>
+              <geom type="box" rgba="0.52 0.58 0.87 1" pos="0 0 0.044" size="0.0168 0.0168 0.027" mass="0.0"/>
+              <geom type="box" rgba="0.52 0.58 0.87 1" pos="0 0 0.170" size="0.0168 0.0168 0.065" mass="0.0"/>
+              
+              <body name="right_wheel" pos="0 0 0.252" quat="0.0597 0 0.9982 0">
+                <geom type="cylinder" size="0.08 0.03" rgba="0.1 0.1 0.1 1" mass="0.5" euler="1.57 0 0" condim="6"/>
+                <joint name="right_wheel_joint" type="hinge" axis="0 1 0" damping="0.01"/>
+              </body>
+              
+              <body name="right_ee_unit" pos="0 0 0.252" quat="0.0422 0.0422 0.7058 -0.7058">
+                <geom type="cylinder" size="0.016 0.015" mass="0.1"/>
+              </body>
+              
+              <body name="right_pseudo" pos="0 0 0.088" quat="0.73095 0 -0.68243 0">
+                <geom type="sphere" size="0.024" mass="0.05"/>
+              </body>
+            </body>
+            
+            <body name="right_knee_unit" pos="0 0 0.153" quat="0.69825 0.69825 0.11155 -0.11155">
+              <geom type="cylinder" size="0.016 0.015" mass="0.1"/>
+            </body>
+          </body>
+          
+          <body name="right_hip_actuator" pos="0 0.03675 0" quat="0.06968 0.06968 0.70367 -0.70367">
+            <geom type="cylinder" size="0.048 0.02" mass="0.44"/>
+          </body>
+          
+          <body name="right_hip_unit" pos="0 0 0" quat="0.06968 0.06968 0.70367 -0.70367">
+            <geom type="cylinder" size="0.01675 0.01675" mass="0.1"/>
+          </body>
+          
+          <body name="right_L3" pos="-0.15 0 -0.01" quat="0.06214 0 0.99807 0">
+            <joint name="right_ground_conn" type="hinge" axis="0 1 0" range="-3.14 3.14" damping="0.1"/>
+            <geom type="box" rgba="0.02 0.51 0.29 1" pos="0 0 0.10078" size="0.01675 0.01675 0.084" mass="0.136"/>
+            
+            <body name="right_L4" pos="0 0 0.20156" quat="0.8085 0 -0.5885 0">
+              <joint name="right_branch" type="hinge" axis="0 1 0" range="-3.14 3.14" damping="0.1"/>
+              <geom type="box" rgba="0.0 0.66 0.36 1" pos="0 0 0.07355" size="0.01675 0.01675 0.0568" mass="0.092"/>
+              
+              <body name="right_conn_pseudo" pos="0 0 0.14709">
+                <joint name="right_conn_revolute" type="hinge" axis="0 1 0" range="-3.14 3.14" damping="0.1"/>
+                <geom type="sphere" size="0.024" mass="0.05"/>
+              </body>
+            </body>
+            
+            <body name="right_branch_unit" pos="0 0 0.20156" quat="0.5717 0.5717 -0.4161 0.4161">
+              <geom type="cylinder" size="0.016 0.015" mass="0.1"/>
+            </body>
+          </body>
+          
+          <body name="right_ground_actuator" pos="-0.15 0.03675 -0.01" quat="0.04394 0.04394 0.70574 -0.70574">
+            <geom type="cylinder" size="0.048 0.02" mass="0.44"/>
+          </body>
+          
+          <body name="right_ground_unit" pos="-0.15 0 -0.01" quat="0.04394 0.04394 0.70574 -0.70574">
+            <geom type="cylinder" size="0.01675 0.01675" mass="0.1"/>
+          </body>
+        </body>
+      </body>
+      
+      <body name="left_leg" pos="0.15 -0.12 0">
+        <body name="left_G">
+          <geom type="box" rgba="0.16 0.43 0.8 1" size="0.0335 0.0335 0.0335" mass="0.05"/>
+          
+          <body name="left_L6" quat="0.0985 0 0.9951 0">
+            <joint name="left_hip" type="hinge" axis="0 -1 0" range="-3.14 3.14" damping="0.1"/>
+            <geom type="box" rgba="0.37 0.50 0.84 1" pos="0 0 0.076" size="0.0168 0.0168 0.0597" mass="0.097"/>
+            
+            <body name="left_L5" pos="0 0 0.153" quat="0.9875 0 0.1578 0">
+              <joint name="left_knee" type="hinge" axis="0 -1 0" range="-3.14 3.14" damping="0.1"/>
+              <geom type="box" rgba="0.52 0.58 0.87 1" pos="0 0 0.126" size="0.0168 0.0168 0.109" mass="0.204"/>
+              <geom type="box" rgba="0.52 0.58 0.87 1" pos="0 0 0.044" size="0.0168 0.0168 0.027" mass="0.0"/>
+              <geom type="box" rgba="0.52 0.58 0.87 1" pos="0 0 0.170" size="0.0168 0.0168 0.065" mass="0.0"/>
+              
+              <body name="left_wheel" pos="0 0 0.252" quat="0.0597 0 0.9982 0">
+                <geom type="cylinder" size="0.08 0.03" rgba="0.1 0.1 0.1 1" mass="0.5" euler="1.57 0 0" condim="6"/>
+                <joint name="left_wheel_joint" type="hinge" axis="0 -1 0" damping="0.01"/>
+              </body>
+              
+              <body name="left_ee_unit" pos="0 0 0.252" quat="0.0422 0.0422 0.7058 -0.7058">
+                <geom type="cylinder" size="0.016 0.015" mass="0.1"/>
+              </body>
+              
+              <body name="left_pseudo" pos="0 0 0.088" quat="0.73095 0 -0.68243 0">
+                <geom type="sphere" size="0.024" mass="0.05"/>
+              </body>
+            </body>
+            
+            <body name="left_knee_unit" pos="0 0 0.153" quat="0.69825 0.69825 0.11155 -0.11155">
+              <geom type="cylinder" size="0.016 0.015" mass="0.1"/>
+            </body>
+          </body>
+          
+          <body name="left_hip_actuator" pos="0 -0.03675 0" quat="0.06968 0.06968 0.70367 -0.70367">
+            <geom type="cylinder" size="0.048 0.02" mass="0.44"/>
+          </body>
+          
+          <body name="left_hip_unit" pos="0 0 0" quat="0.06968 0.06968 0.70367 -0.70367">
+            <geom type="cylinder" size="0.01675 0.01675" mass="0.1"/>
+          </body>
+          
+          <body name="left_L3" pos="-0.15 0 -0.01" quat="0.06214 0 0.99807 0">
+            <joint name="left_ground_conn" type="hinge" axis="0 -1 0" range="-3.14 3.14" damping="0.1"/>
+            <geom type="box" rgba="0.02 0.51 0.29 1" pos="0 0 0.10078" size="0.01675 0.01675 0.084" mass="0.136"/>
+            
+            <body name="left_L4" pos="0 0 0.20156" quat="0.8085 0 -0.5885 0">
+              <joint name="left_branch" type="hinge" axis="0 -1 0" range="-3.14 3.14" damping="0.1"/>
+              <geom type="box" rgba="0.0 0.66 0.36 1" pos="0 0 0.07355" size="0.01675 0.01675 0.0568" mass="0.092"/>
+              
+              <body name="left_conn_pseudo" pos="0 0 0.14709">
+                <joint name="left_conn_revolute" type="hinge" axis="0 -1 0" range="-3.14 3.14" damping="0.1"/>
+                <geom type="sphere" size="0.024" mass="0.05"/>
+              </body>
+            </body>
+            
+            <body name="left_branch_unit" pos="0 0 0.20156" quat="0.5717 0.5717 -0.4161 0.4161">
+              <geom type="cylinder" size="0.016 0.015" mass="0.1"/>
+            </body>
+          </body>
+          
+          <body name="left_ground_actuator" pos="-0.15 -0.03675 -0.01" quat="0.04394 0.04394 0.70574 -0.70574">
+            <geom type="cylinder" size="0.048 0.02" mass="0.44"/>
+          </body>
+          
+          <body name="left_ground_unit" pos="-0.15 0 -0.01" quat="0.04394 0.04394 0.70574 -0.70574">
+            <geom type="cylinder" size="0.01675 0.01675" mass="0.1"/>
+          </body>
+        </body>
+      </body>
+      
+    </body>
+  </worldbody>
+  
+  <actuator>
+    
+    <motor name="right_hip_motor" joint="right_hip" gear="45" ctrlrange="-15 15" forcerange="-30 30"/>
+    <motor name="right_knee_motor" joint="right_knee" gear="45" ctrlrange="-15 15" forcerange="-30 30"/>
+    <motor name="right_wheel_motor" joint="right_wheel_joint" gear="41" ctrlrange="-10 10" forcerange="-10 10"/>
+    <motor name="right_ground_motor" joint="right_ground_conn" gear="41" ctrlrange="-1 1" forcerange="-1 1"/>
+    
+    <motor name="left_hip_motor" joint="left_hip" gear="45" ctrlrange="-15 15" forcerange="-30 30"/>
+    <motor name="left_knee_motor" joint="left_knee" gear="45" ctrlrange="-15 15" forcerange="-30 30"/>
+    <motor name="left_wheel_motor" joint="left_wheel_joint" gear="41" ctrlrange="-10 10" forcerange="-10 10"/>
+    <motor name="left_ground_motor" joint="left_ground_conn" gear="41" ctrlrange="-1 1" forcerange="-1 1"/>
+  </actuator>
+  
+  <equality>
+    <connect name="right_connect" body1="right_conn_pseudo" body2="right_pseudo" anchor="0 0 0" solref="0.001 2" solimp="1 1 0"/>
+    <connect name="left_connect" body1="left_conn_pseudo" body2="left_pseudo" anchor="0 0 0" solref="0.001 2" solimp="1 1 0"/>
+  </equality>
+  
+  <keyframe>
+  <key name="stand" qpos="-0.1 -0.1 1.0   0 0 0 0   0 0 0   0 0 0"/>
+</keyframe>
+
+</mujoco>
