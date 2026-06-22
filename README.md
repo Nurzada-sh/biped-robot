@@ -1,7 +1,8 @@
 # biped-robot
 <img width="1545" height="1623" alt="image" src="https://github.com/user-attachments/assets/80da62fd-5e92-4cac-966f-a1d280631691" />
 <img width="1048" height="1467" alt="image" src="https://github.com/user-attachments/assets/93c9a482-f8eb-40b5-858b-26c2fcbb524e" />
-![Uploading image.png…]()
+<img width="1048" height="1467" alt="image" src="https://github.com/user-attachments/assets/57685736-5ef8-4f70-856f-7a071e77237e" />
+
 
 
 # Исследование и разработка программного модуля для идентификации динамических параметров исполнительных механизмов гибридного робота с шагающими колесами, используемых при обучении политик управления с подкреплением (RL)
