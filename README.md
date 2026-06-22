@@ -1,5 +1,7 @@
 # biped-robot
-<img width="2043" height="1555" alt="image" src="https://github.com/user-attachments/assets/9496dfcc-e66f-4dfd-82f7-aba8ca520f72" />
+<img width="1545" height="1623" alt="image" src="https://github.com/user-attachments/assets/80da62fd-5e92-4cac-966f-a1d280631691" />
+<img width="1048" height="1467" alt="image" src="https://github.com/user-attachments/assets/93c9a482-f8eb-40b5-858b-26c2fcbb524e" />
+![Uploading image.png…]()
 
 
 # Исследование и разработка программного модуля для идентификации динамических параметров исполнительных механизмов гибридного робота с шагающими колесами, используемых при обучении политик управления с подкреплением (RL)
@@ -19,10 +21,11 @@
 - Валидация параметров модели
 
 ## Структура проекта
-- biped-robot
-- src
-- models - модели роботов
-- sac_rl 
+- config.py – parameters
+- core.py – DREM and environment
+- collect.py – data collection and identification
+- train.py – training and testing
+- main.py – CLI entry point
 - requirements.txt - ависимости
 - LICENSE MIT лицензия
 - README.md - документация
@@ -32,13 +35,6 @@
 - 
 - MuJoCo (mjpro 2.3+)
   
-## Иструкция
-1. 
-2. 
-3. 
-4. 
-
-
 ## Установка
 ```bash
 git clone https://github.com/Nurzada-sh/biped-robot.git
